@@ -28,10 +28,6 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
   end
 
-  def edit_card
-    @charge = Charge.where payment_profile_id: params[:id]
-  end
-
   def update
     @account = Account.find(params[:id])
 

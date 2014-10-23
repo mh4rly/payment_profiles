@@ -5,16 +5,8 @@
 
 <p>
   <strong>Stored Card Type:</strong>
-  <% @profiles.each do |profile| %>
-    <ul>
-      <li>
-        <%= profile.card_type %>, <%= profile.last_four %><%=" [default]" if profile.is_default == 1 %> <%= link_to 'Edit' %>
-        | <%= link_to 'Delete', [profile.account, profile],
-             method: :delete,
-             data: { confirm: 'Are you sure?' } %>
-      </li>
-    </ul>
-  <% end %>
+
+  <%= render partial: "payment_profiles/list" %>
 </p>
 
 

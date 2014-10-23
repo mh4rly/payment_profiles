@@ -1,4 +1,24 @@
 class PaymentProfilesController < ApplicationController
+  def list
+
+  end
+
+  def edit
+    @account = Account.find(params[:account_id])
+    @payment_profiles = @account.payment_profiles.find(params[:id])
+  end
+
+  def update
+    @account = Account.find(params[:account_id])
+    @payment_profiles = @account.payment_profiles.find(params[:id])
+
+    if @payment_profiles.update(payment_profile_params)
+      redirect_to @payment_profiles
+    else
+      render 'edit'
+    end
+  end
+
   def create
     @account = Account.find(params[:account_id])
     @payment_profile = @account.payment_profiles.create(payment_profile_params)
