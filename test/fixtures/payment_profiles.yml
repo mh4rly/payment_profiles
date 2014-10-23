@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_id: 1
+  last_four: 1
+  card_type: MyString
+  exp_month: 1
+  exp_year: 1
+  is_default: false
+
+two:
+  account_id: 1
+  last_four: 1
+  card_type: MyString
+  exp_month: 1
+  exp_year: 1
+  is_default: false

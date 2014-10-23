@@ -1,0 +1,16 @@
+<h1>Listing account</h1>
+<%= link_to 'New account', new_account_path %>
+<table>
+  <tr>
+    <th>Email</th>
+    <th colspan="2"></th>
+  </tr>
+
+<% @account.each do |account| %>
+  <tr>
+    <td><%= account.email %></td>
+    <td><%= link_to 'Show', account_path(account) %></td>
+    <td><%= link_to 'Edit', edit_account_path(account) %></td>
+  </tr>
+<% end %>
+</table>

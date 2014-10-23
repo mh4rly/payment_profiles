@@ -1,0 +1,65 @@
+<p>
+  <strong>Email:</strong>
+  <%= @account.email %>
+</p>
+
+<p>
+  <strong>Stored Card Type:</strong>
+  <% @profiles.each do |profile| %>
+    <ul>
+      <li>
+        <%= profile.card_type %>, <%= profile.last_four %><%=" [default]" if profile.is_default == 1 %> <%= link_to 'Edit' %>
+        | <%= link_to 'Delete', [profile.account, profile],
+             method: :delete,
+             data: { confirm: 'Are you sure?' } %>
+      </li>
+    </ul>
+  <% end %>
+</p>
+
+
+<p>
+  <strong>Charge History:</strong>
+  <% @charge.each do |charge| %>
+
+  <ul>
+    <li>
+      <%= charge.package_id %>
+      <%= charge.currency_type %>
+      <%= charge.amount %>
+    </li>
+  </ul>
+  <% end %>
+</p>
+
+<h2>Add a card:</h2>
+<%= form_for([@account, @account.payment_profiles.build]) do |f| %>
+  <p>
+    <%= f.label :last_four %><br>
+    <%= f.text_field :last_four %>
+  </p>
+  <p>
+    <%= f.label :card_type %><br>
+    <%= f.text_area :card_type %>
+  </p>
+  <p>
+    <%= f.label :exp_month %><br>
+    <%= f.text_field :exp_month %>
+  </p>
+  <p>
+    <%= f.label :exp_year %><br>
+    <%= f.text_field :exp_year %>
+  </p>
+  <p>
+    <%= f.label :default %><br>
+    <%= f.check_box :is_default %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+
+
+<%= link_to 'Back', accounts_path %>
+| <%= link_to 'Edit', edit_account_path(@account) %>

@@ -1,0 +1,24 @@
+<%= form_for @account do |f| %>
+  <% if @profiles.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@profiles.errors.count, "error") %> prohibited
+      this profiles from being saved:</h2>
+    <ul>
+    <% @profiles.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :exp_month %><br>
+    <%= f.text_field :exp_month %>
+  </p>
+  <p>
+    <%= f.label :exp_year %><br>
+    <%= f.text_field :exp_year %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
